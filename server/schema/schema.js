@@ -1,7 +1,7 @@
-const graphql = reauire('graphql');
-const _ = require('loadash');
+const graphql = require('graphql');
+const _ = require('lodash');
 
-const { GraphQLObjectType, GrapQLString, GrapQLSchema } = graphql;
+const { GraphQLObjectType, GraphQLString, GraphQLSchema } = graphql;
 
 
 // Dummy data
@@ -28,8 +28,8 @@ const BookType = new GraphQLObjectType({
     name: 'Book',
     fields: () => ({
         id: { type: GraphQLString },
-        name: { type: GrapQLString },
-        genre: { type: GrapQLString }
+        name: { type: GraphQLString },
+        genre: { type: GraphQLString }
     })
 });
 
@@ -40,7 +40,7 @@ const RootQuery = new GraphQLObjectType({
         book: {
             type: BookType,
             args: {
-                id: { type: GrapQLString }
+                id: { type: GraphQLString }
             },
             resolve(parent, args) {
                 // code to get data from db.
@@ -50,6 +50,6 @@ const RootQuery = new GraphQLObjectType({
     }
 });
 
-module.exports = new GrapQLSchema({
+module.exports = new GraphQLSchema({
     query: RootQuery
 });
