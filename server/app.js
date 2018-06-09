@@ -7,7 +7,8 @@ const app = express();
 
 app.use('/graphql', graphqlHTTP({
     // schema: schema - ES6 way is shorter    
-    schema
+    schema,
+    graphiql: true
 }));
 
 const port = 4000;
