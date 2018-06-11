@@ -16,11 +16,23 @@ nodemon server/app
 localhost:4000/graphql
 
 
-# Example query
+# Example query for a book
 {
   book(id: "3"){
     name
     genre
     id
+  }
+}
+
+
+# Example query for a book with author
+{
+  book(id:2) {
+    name
+    genre
+    author {
+      name
+    }
   }
 }
