@@ -9,17 +9,20 @@ let books = [
     {   
         id: '1',
         name: 'First',
-        genre: 'Gee' 
+        genre: 'Gee',
+        authorId: '1' 
     },
     {   
         id: '2',
         name: 'Second',
-        genre: 'Uuh' 
+        genre: 'Uuh',
+        authorId: '2' 
     },
     {   
         id: '3',
         name: 'Third',
-        genre: 'Aah' 
+        genre: 'Aah' ,
+        authorId: '3'
     }
 ];
 
@@ -49,7 +52,14 @@ const BookType = new GraphQLObjectType({
     fields: () => ({
         id: { type: GraphQLID },
         name: { type: GraphQLString },
-        genre: { type: GraphQLString }
+        genre: { type: GraphQLString },
+        author: {
+            type: AuthorType,
+            resolve(parent, args) {
+                console.log(parent);
+                return _.find(authors, { id: parent.authorId });
+            }
+        }
     })
 });
 
